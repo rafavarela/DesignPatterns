@@ -1,10 +1,24 @@
-﻿namespace ConsoleApp1
+﻿using ConsoleApp1.Structural.Decorator.TextEditorExample;
+using ConsoleApp1.Structural.Decorator.TextEditorExample.Decorators;
+
+namespace ConsoleApp1;
+
+public class Program
 {
-    internal class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello, World!");
-        }
+        IText text = new PlainText("Hello world!");
+        Console.WriteLine(text.Render());
+
+        text = new BoldDecorator(text);
+        Console.WriteLine(text.Render());
+
+        text = new ItalicDecorator(text);
+        Console.WriteLine(text.Render());
+
+        text = new UnderlineDecorator(text);
+        Console.WriteLine(text.Render());
+
+        Console.ReadKey();
     }
 }
